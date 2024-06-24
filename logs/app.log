@@ -1,0 +1,76 @@
+2024-06-24 09:29:41,708 - INFO - auth:20 - ImmutableMultiDict([])
+2024-06-24 09:36:41,765 - INFO - auth:20 - ImmutableMultiDict([])
+2024-06-24 09:36:55,138 - INFO - auth:20 - {'phone': '17696021211', 'password': '11111111', 'confirm_password': '11111111'}
+2024-06-24 09:37:53,496 - INFO - auth:20 - {'phone': '17696021211', 'password': '11111111', 'confirm_password': '11111111'}
+2024-06-24 09:37:53,497 - ERROR - app:838 - Exception on /api/register [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/workspaces/red-crawler/app/views/auth.py", line 21, in register_view
+    form = RegistrationForm(request.get_json())
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/wtforms/form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_wtf/form.py", line 73, in __init__
+    super().__init__(formdata=formdata, **kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/wtforms/form.py", line 286, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/wtforms/form.py", line 127, in process
+    field.process(formdata, data, extra_filters=field_extra_filters)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/wtforms/fields/core.py", line 327, in process
+    self.raw_data = formdata.getlist(self.name)
+AttributeError: 'dict' object has no attribute 'getlist'
+2024-06-24 09:43:29,620 - INFO - auth:20 - {'phone': '17696021211', 'password': '11111111', 'confirm_password': '11111111'}
+2024-06-24 09:43:29,622 - ERROR - app:838 - Exception on /api/register [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/workspaces/red-crawler/app/views/auth.py", line 27, in register_view
+    form = RegistrationForm(form_data)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/wtforms/form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_wtf/form.py", line 73, in __init__
+    super().__init__(formdata=formdata, **kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/wtforms/form.py", line 286, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/wtforms/form.py", line 127, in process
+    field.process(formdata, data, extra_filters=field_extra_filters)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/wtforms/fields/core.py", line 327, in process
+    self.raw_data = formdata.getlist(self.name)
+AttributeError: 'dict' object has no attribute 'getlist'
+2024-06-24 09:44:42,533 - INFO - auth:26 - {'phone': '17696021211', 'password': '11111111', 'confirm_password': '11111111'}
+2024-06-24 09:44:42,534 - ERROR - app:838 - Exception on /api/register [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/workspaces/red-crawler/app/views/auth.py", line 28, in register_view
+    form = RegistrationForm(form_data)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/wtforms/form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_wtf/form.py", line 73, in __init__
+    super().__init__(formdata=formdata, **kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/wtforms/form.py", line 286, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/wtforms/form.py", line 127, in process
+    field.process(formdata, data, extra_filters=field_extra_filters)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/wtforms/fields/core.py", line 327, in process
+    self.raw_data = formdata.getlist(self.name)
+AttributeError: 'dict' object has no attribute 'getlist'
+2024-06-24 09:54:41,230 - INFO - auth:24 - {'phone': '17696021211', 'password': '11111111', 'confirm_password': '11111111'}
