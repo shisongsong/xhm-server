@@ -5,3 +5,5 @@ Flask-WTF
 Flask-JWT-Extended
 wtforms
 Flask-Login
+flask-marshmallow
+marshmallow-sqlalchemy

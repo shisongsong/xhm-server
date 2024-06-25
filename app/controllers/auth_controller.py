@@ -1,4 +1,4 @@
-from flask import flash
+from flask import current_app
 from app.models.user import User
 from flask_jwt_extended import create_access_token
 from app import db
@@ -10,7 +10,7 @@ def get_user_jwt(user_id):
 
 def register(phone, password):
     if User.query.filter_by(phone=phone).first():
-        flash('Phone already exists.')
+        current_app.logger.error('Phone already exists.')
         return False
     new_user = User(phone=phone)
     new_user.set_password(password)

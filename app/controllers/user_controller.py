@@ -1,5 +1,6 @@
 from app.models.user import User
+from app.schemas.user import users_schema
 
 def get_all():
-    users =  User.query.all()
-    return users
+    all_users = User.query.all()
+    return users_schema.dump(all_users)

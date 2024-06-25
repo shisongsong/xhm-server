@@ -1,22 +1,32 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_marshmallow import Marshmallow
 from flask_jwt_extended import JWTManager
 import logging
 from logging.handlers import RotatingFileHandler
 import config
 import os
 
+# 初始化app
 app = Flask(__name__)
 app.config.from_object(config)
 
+# 初始化数据库
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+# 初始化Marshmallow
+ma = Marshmallow(app)
+
+# 注册Blueprint
 from app.views.auth import auth_bp
 from app.views.user import user_bp
 app.register_blueprint(auth_bp)
 app.register_blueprint(user_bp)
+
+# 禁用CSRF
+app.config['WTF_CSRF_ENABLED'] = False
 
 # JWT配置
 app.config['JWT_SECRET_KEY'] = 'your-secret-key'  # 应替换为强随机密钥

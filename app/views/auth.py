@@ -1,6 +1,5 @@
 from flask import Blueprint, request, jsonify, current_app
 from flask_wtf import FlaskForm
-from flask_wtf.csrf import 
 from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, EqualTo
 from app.controllers.auth_controller import register, login, get_user_jwt
@@ -17,7 +16,6 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
 
 @auth_bp.route('/api/register', methods=['POST'])
-@csrf_exempt  # 使用Flask-WTF时，需要先导入csrf并使用此装饰器
 def register_view():
     json_data = request.get_json()
     if not json_data:
@@ -35,7 +33,6 @@ def register_view():
         return jsonify({"errors": errors}), 400
 
 @auth_bp.route('/api/login', methods=['POST'])
-@csrf_exempt 
 def login_view():
     form = LoginForm(request.form)
     if form.validate_on_submit():
