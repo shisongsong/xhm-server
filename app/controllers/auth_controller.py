@@ -19,7 +19,7 @@ def register(phone, password):
     return True
 
 def login(phone, password):
-    user = User.query.filter_by(phone=phone).first()
+    user = User.query.filter_by(phone=phone, deleted=False).first()
     if user and user.check_password(password):
         return user
     return None

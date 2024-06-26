@@ -15,7 +15,7 @@ class LoginForm(FlaskForm):
     phone = StringField('Phone', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
 
-@auth_bp.route('/api/register', methods=['POST'])
+@auth_bp.route("/api/register", methods=['POST'])
 def register_view():
     json_data = request.get_json()
     if not json_data:
@@ -32,9 +32,16 @@ def register_view():
         errors = {field: error for field, error in form.errors.items()}
         return jsonify({"errors": errors}), 400
 
-@auth_bp.route('/api/login', methods=['POST'])
-def login_view():
-    form = LoginForm(request.form)
+@auth_bp.route('/<prefix>/login', methods=['POST'])
+def login_view(prefix):
+    if prefix not in ["admin", "api"]:
+        return jsonify({"errors": "Not found!"}), 404
+    
+    json_data = request.get_json()
+    if not json_data:
+        return jsonify({"error": "No JSON data provided"}), 400
+    
+    form = LoginForm(data=json_data)
     if form.validate_on_submit():
         user = login(form.phone.data, form.password.data)
         if user:

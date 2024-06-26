@@ -3,7 +3,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, EqualTo
 from flask_jwt_extended import jwt_required
-from jwt_required import admin_route_required
+from app.controllers.admin.user_controller import create
+from app.jwt_required import admin_route_required
 from app.models.user import User
 from app.schemas.user import users_schema, user_schema
 
@@ -41,7 +42,7 @@ def create_user():
     current_app.logger.info(json_data)
     form = CreateUserForm(data=json_data)
     if form.validate_on_submit():
-        if register(form.phone.data, form.password.data):
+        if create(form.phone.data, form.password.data, form.role.data):
             return jsonify({"message": "Account created successfully!"}), 201
         else:
             return jsonify({"error": "Failed to create account."}), 400

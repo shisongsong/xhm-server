@@ -219,3 +219,75 @@ Traceback (most recent call last):
   File "/workspaces/red-crawler/app/views/user.py", line 15, in user_view
     user = User.query.first(id = user_id)
 TypeError: Query.first() got an unexpected keyword argument 'id'
+2024-06-26 06:55:26,113 - INFO - auth:24 - {'phone': '17696021211', 'password': '11111111', 'confirm_password': '11111111'}
+2024-06-26 06:55:26,125 - ERROR - app:838 - Exception on /api/register [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/workspaces/red-crawler/app/views/auth.py", line 27, in register_view
+    if register(form.phone.data, form.password.data):
+  File "/workspaces/red-crawler/app/controllers/auth_controller.py", line 12, in register
+    if User.query.filter_by(phone=phone).first():
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2728, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2236, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.phone AS user_phone, user.password_hash AS user_password_hash, user.role AS user_role, user.deleted AS user_deleted, user.created_at AS user_created_at 
+FROM user 
+WHERE user.phone = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('17696021211', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-06-26 06:56:44,576 - INFO - auth:24 - {'phone': '17696021211', 'password': '11111111', 'confirm_password': '11111111'}
+2024-06-26 06:56:48,606 - INFO - auth:24 - {'phone': '17696021211', 'password': '11111111', 'confirm_password': '11111111'}
+2024-06-26 06:56:48,608 - ERROR - auth_controller:13 - Phone already exists.
+2024-06-26 06:58:05,084 - ERROR - app:838 - Exception on /api/login [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+TypeError: login_view() got an unexpected keyword argument 'prefix'
+2024-06-26 07:46:49,666 - INFO - auth:24 - {'phone': '17696021212', 'password': '11111111', 'confirm_password': '11111111'}
