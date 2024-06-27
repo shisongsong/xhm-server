@@ -7,3 +7,4 @@ wtforms
 Flask-Login
 flask-marshmallow
 marshmallow-sqlalchemy
+flask_cors

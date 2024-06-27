@@ -1,7 +1,11 @@
 from flask import current_app
-from app.models.user import User
 from flask_jwt_extended import create_access_token
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField
+from wtforms.validators import DataRequired, EqualTo
+from werkzeug.exceptions import BadRequest, NotFound
 from app import db
+from app.models.user import User
 
 def get_user_jwt(user_id):
     """生成JWT令牌"""
@@ -23,3 +27,12 @@ def login(phone, password):
     if user and user.check_password(password):
         return user
     return None
+
+class RegistrationForm(FlaskForm):
+    phone = StringField('Phone', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password', "密码不一致")])
+
+class LoginForm(FlaskForm):
+    phone = StringField('Phone', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])

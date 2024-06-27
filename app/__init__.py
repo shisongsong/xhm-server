@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_marshmallow import Marshmallow
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 import logging
 from logging.handlers import RotatingFileHandler
 from app.jwt_callbacks import add_claims_to_access_token
@@ -39,19 +40,22 @@ with app.app_context():
 
 # 禁用CSRF
 app.config['WTF_CSRF_ENABLED'] = False
+CORS(app)
 
 # JWT配置
 app.config['JWT_SECRET_KEY'] = 'your-secret-key'  # 应替换为强随机密钥
 jwt = JWTManager(app)
 jwt.additional_claims_loader(add_claims_to_access_token)
 
+# 注册Blueprint
+from app.views.auth import auth_bp
+
 # 注册admin Blueprint
 from app.views.admin.user import admin_user_bp
 app.register_blueprint(admin_user_bp)
 
-# 注册Blueprint
-from app.views.auth import auth_bp
-from app.views.user import user_bp
+# 注册api Blueprint
+from app.views.api.user import user_bp
 app.register_blueprint(auth_bp)
 app.register_blueprint(user_bp)
 

@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify, current_app
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, EqualTo
+from werkzeug.exceptions import BadRequest, NotFound
 from app.controllers.auth_controller import register, login, get_user_jwt
 
 auth_bp = Blueprint('auth_api', __name__)
@@ -19,9 +20,8 @@ class LoginForm(FlaskForm):
 def register_view():
     json_data = request.get_json()
     if not json_data:
-        return jsonify({"error": "No JSON data provided"}), 400
+        raise BadRequest("缺少必要参数")
     
-    current_app.logger.info(json_data)
     form = RegistrationForm(data=json_data)
     if form.validate_on_submit():
         if register(form.phone.data, form.password.data):
@@ -35,11 +35,11 @@ def register_view():
 @auth_bp.route('/<prefix>/login', methods=['POST'])
 def login_view(prefix):
     if prefix not in ["admin", "api"]:
-        return jsonify({"errors": "Not found!"}), 404
-    
+        raise NotFound("api路径不存在")
+
     json_data = request.get_json()
     if not json_data:
-        return jsonify({"error": "No JSON data provided"}), 400
+        raise BadRequest("缺少必要参数")
     
     form = LoginForm(data=json_data)
     if form.validate_on_submit():
