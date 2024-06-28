@@ -1,8 +1,11 @@
+from datetime import datetime, timedelta
 from flask import current_app
 from flask_wtf import FlaskForm
-from wtforms import BooleanField, StringField, PasswordField
+from wtforms import BooleanField, IntegerField, StringField, PasswordField
 from wtforms.validators import DataRequired, EqualTo
 from werkzeug.exceptions import BadRequest, NotFound
+from app.models.product import Product
+from app.models.property import Property
 from app.models.user import User
 from app import db
 
@@ -45,6 +48,42 @@ def reset_password(user_id, json_data):
     else:
         errors = {field: error for field, error in form.errors.items()}
         return errors
+    
+def send_gift(user_id:int, json_data):
+    user = User.query.get(user_id)
+    if not user:
+        raise NotFound("用户不存在")
+    form:SendGiftForm = SendGiftForm(data=json_data)
+    if form.validate_on_submit():
+        product:Product = Product.query.get(form.product_id.data)
+        if not product:
+            raise NotFound("产品不存在")
+        last_property:Property = Property.query.filter_by(user_id = user_id, ptype=1, deleted=False).first()
+        start_at, end_at = None, None
+        
+        if product.ptype == 1:
+            start_at = datetime.now
+            if last_property and last_property.end_at > datetime.now:
+                start_at = last_property.end_at
+            end_at = start_at + timedelta(product.duration.days)
+            
+        new_property:Property = Property(
+            name=product.name,
+            description=product.description,
+            ptype=product.ptype,
+            price=product.price,
+            pieces=product.pieces,
+            user_id=user_id,
+            product_id=form.product_id.data,
+            order_id=-1,
+            start_at=start_at,
+            end_at=end_at
+        )
+        db.session.add(new_property)
+        db.session.commit()
+    else:
+        errors = {field: error for field, error in form.errors.items()}
+        return errors
 
 class CreateUserForm(FlaskForm):
     phone = StringField('Phone', validators=[DataRequired()])
@@ -59,3 +98,6 @@ class UpdateUserForm(FlaskForm):
 class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('ConfirmPassword', validators=[DataRequired(), EqualTo('password', message="密码不一致")])
+    
+class SendGiftForm(FlaskForm):
+    product_id = IntegerField('Product', validators=[DataRequired()])

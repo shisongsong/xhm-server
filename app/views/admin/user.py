@@ -4,7 +4,7 @@ from wtforms import BooleanField, StringField, PasswordField
 from wtforms.validators import DataRequired, EqualTo
 from werkzeug.exceptions import BadRequest, NotFound
 from flask_jwt_extended import jwt_required
-from app.controllers.admin.user_controller import create, update, reset_password, delete
+from app.controllers.admin.user_controller import create, send_gift, update, reset_password
 from app.jwt_required import admin_route_required
 from app.models.user import User
 from app.schemas.user import users_schema, user_schema
@@ -12,26 +12,12 @@ from app.views import api_view
 
 admin_user_bp = Blueprint('user', __name__, url_prefix='/admin')
 
-class CreateUserForm(FlaskForm):
-    phone = StringField('Phone', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    role = StringField('Role', validators=[DataRequired()])
-    
-class UpdateUserForm(FlaskForm):
-    phone = StringField('Phone', validators=[DataRequired()])
-    role = StringField('Role', validators=[DataRequired()])
-    deleted = BooleanField('Deleted', validators=[DataRequired()])
-    
-class ResetPasswordForm(FlaskForm):
-    password = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('ConfirmPassword', validators=[DataRequired()])
-
 @admin_user_bp.route('/users', methods=['GET'])
 @jwt_required()
 @admin_route_required
 @api_view()
 def users_view():
-    all_users = User.query.all()
+    all_users = User.query.paginate(request.)
     users = users_schema.dump(all_users)
     return users
 
@@ -81,4 +67,16 @@ def reset_password_view(user_id):
         raise BadRequest("缺少必要参数")
 
     errors = reset_password(user_id, json_data)
+    return not errors, {"errors": errors}, 200
+
+@admin_user_bp.route('/users/<int:user_id>/send_gift', methods=['POST'])
+@jwt_required()
+@admin_route_required
+@api_view()
+def send_gift_view(user_id):
+    json_data = request.get_json()
+    if not json_data or not user_id:
+        raise BadRequest("缺少必要参数")
+
+    errors = send_gift(user_id, json_data)
     return not errors, {"errors": errors}, 200

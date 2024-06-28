@@ -1,3 +1,4 @@
+from datetime import timedelta
 from flask import current_app
 from flask_jwt_extended import create_access_token
 from flask_wtf import FlaskForm
@@ -9,7 +10,7 @@ from app.models.user import User
 
 def get_user_jwt(user_id):
     """生成JWT令牌"""
-    access_token = create_access_token(identity=user_id)
+    access_token = create_access_token(identity=user_id, expires_delta=timedelta(hours=2))
     return access_token
 
 def register(phone, password):

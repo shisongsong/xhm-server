@@ -26,17 +26,21 @@ from app.models.product import Product
 from app.models.order import Order
 from app.models.property import Property
 
-# 添加admin用户
-with app.app_context():
-    u = User.query.filter_by(phone='17696021211').first()
-    if u:
-        u.set_password('11111111')
-        u.role = 'admin'
-    else:
-        u = User(phone='17696021211', role='admin')
-        u.set_password("11111111")
-        db.session.add(u)
-    db.session.commit()
+# 创建种子数据
+from app.seed_data import seed_data
+seed_data(app, db)
+
+# # 添加admin用户
+# with app.app_context():
+#     u = User.query.filter_by(phone='17696021211').first()
+#     if u:
+#         u.set_password('11111111')
+#         u.role = 'admin'
+#     else:
+#         u = User(phone='17696021211', role='admin')
+#         u.set_password("11111111")
+#         db.session.add(u)
+#     db.session.commit()
 
 # 禁用CSRF
 app.config['WTF_CSRF_ENABLED'] = False
@@ -52,7 +56,11 @@ from app.views.auth import auth_bp
 
 # 注册admin Blueprint
 from app.views.admin.user import admin_user_bp
+from app.views.admin.product import admin_product_bp
+from app.views.admin.property import admin_property_bp
 app.register_blueprint(admin_user_bp)
+app.register_blueprint(admin_product_bp)
+app.register_blueprint(admin_property_bp)
 
 # 注册api Blueprint
 from app.views.api.user import user_bp
