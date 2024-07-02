@@ -8,9 +8,9 @@ from werkzeug.exceptions import BadRequest, NotFound
 from app import db
 from app.models.user import User
 
-def get_user_jwt(user_id):
+def get_user_jwt(user):
     """生成JWT令牌"""
-    access_token = create_access_token(identity=user_id, expires_delta=timedelta(hours=2))
+    access_token = create_access_token(identity=user, expires_delta=timedelta(hours=2))
     return access_token
 
 def register(phone, password):

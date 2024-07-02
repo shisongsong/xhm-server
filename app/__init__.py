@@ -6,7 +6,7 @@ from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 import logging
 from logging.handlers import RotatingFileHandler
-from app.jwt_callbacks import add_claims_to_access_token
+from app.jwt_callbacks import add_claims_to_access_token, user_identity_lookup, user_lookup_callback
 import config
 import os
 
@@ -30,18 +30,6 @@ from app.models.property import Property
 from app.seed_data import seed_data
 seed_data(app, db)
 
-# # 添加admin用户
-# with app.app_context():
-#     u = User.query.filter_by(phone='17696021211').first()
-#     if u:
-#         u.set_password('11111111')
-#         u.role = 'admin'
-#     else:
-#         u = User(phone='17696021211', role='admin')
-#         u.set_password("11111111")
-#         db.session.add(u)
-#     db.session.commit()
-
 # 禁用CSRF
 app.config['WTF_CSRF_ENABLED'] = False
 CORS(app)
@@ -50,9 +38,12 @@ CORS(app)
 app.config['JWT_SECRET_KEY'] = 'your-secret-key'  # 应替换为强随机密钥
 jwt = JWTManager(app)
 jwt.additional_claims_loader(add_claims_to_access_token)
+jwt.user_identity_loader(user_identity_lookup)
+jwt.user_lookup_loader(user_lookup_callback)
 
 # 注册Blueprint
 from app.views.auth import auth_bp
+app.register_blueprint(auth_bp)
 
 # 注册admin Blueprint
 from app.views.admin.user import admin_user_bp
@@ -63,9 +54,12 @@ app.register_blueprint(admin_product_bp)
 app.register_blueprint(admin_property_bp)
 
 # 注册api Blueprint
-from app.views.api.user import user_bp
-app.register_blueprint(auth_bp)
-app.register_blueprint(user_bp)
+from app.views.api.user import api_user_bp
+from app.views.api.product import api_product_bp
+from app.views.api.property import api_property_bp
+app.register_blueprint(api_user_bp)
+app.register_blueprint(api_product_bp)
+app.register_blueprint(api_property_bp)
 
 # 设置日志级别
 app.logger.setLevel(logging.DEBUG)  # 或者logging.INFO, logging.WARNING等
@@ -79,7 +73,7 @@ file_handler.setLevel(logging.DEBUG)  # 设置文件日志级别
 
 # 配置控制台日志
 console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)  # 控制台日志级别，可以根据需要调整
+console_handler.setLevel(logging.DEBUG)  # 控制台日志级别，可以根据需要调整
 
 # 设置日志格式
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(module)s:%(lineno)d - %(message)s')

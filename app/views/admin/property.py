@@ -4,19 +4,18 @@ from flask_jwt_extended import jwt_required
 from app.controllers.admin.property_controller import update
 from app.jwt_required import admin_route_required
 from app.models.property import Property
-from app.schemas.property import properties_schema, property_schema
-from app.views import api_view
+from app.schemas.property import PropertySchema, properties_schema, property_schema
+from app.views import api_view, paginator
 
-admin_property_bp = Blueprint('property', __name__, url_prefix='/admin')
+admin_property_bp = Blueprint('admin_property', __name__, url_prefix='/admin')
 
 @admin_property_bp.route('/properties', methods=['GET'])
 @jwt_required()
 @admin_route_required
 @api_view()
+@paginator(PropertySchema)
 def properties_view():
-    all_properties = Property.query.all()
-    properties = properties_schema.dump(all_properties)
-    return properties
+    return Property.query
 
 @admin_property_bp.route('/properties/<int:property_id>', methods=['GET'])
 @jwt_required()

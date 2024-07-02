@@ -4,19 +4,18 @@ from flask_jwt_extended import jwt_required
 from app.controllers.admin.product_controller import create, update
 from app.jwt_required import admin_route_required
 from app.models.product import Product
-from app.schemas.product import products_schema, product_schema
-from app.views import api_view
+from app.schemas.product import ProductSchema, products_schema, product_schema
+from app.views import api_view, paginator
 
-admin_product_bp = Blueprint('product', __name__, url_prefix='/admin')
+admin_product_bp = Blueprint('admin_product', __name__, url_prefix='/admin')
 
 @admin_product_bp.route('/products', methods=['GET'])
 @jwt_required()
 @admin_route_required
 @api_view()
+@paginator(ProductSchema)
 def products_view():
-    all_products = Product.query.all()
-    products = products_schema.dump(all_products)
-    return products
+    return Product.query
 
 @admin_product_bp.route('/products/<int:product_id>', methods=['GET'])
 @jwt_required()

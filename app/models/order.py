@@ -4,8 +4,8 @@ from app import db
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order_number = db.Column(db.String(50), nullable=False)
-    origin_price = db.Column(db.Numeric, default=0)
-    price = db.Column(db.Numeric, default=0)
+    origin_price = db.Column(db.Float, default=0)
+    price = db.Column(db.Float, default=0)
     status = db.Column(db.Integer, nullable=False, default=0)
     deleted = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.now)

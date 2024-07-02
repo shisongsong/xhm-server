@@ -4,6 +4,7 @@ from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, EqualTo
 from werkzeug.exceptions import BadRequest, NotFound
 from app.controllers.auth_controller import register, login, get_user_jwt
+from app.schemas.user import user_schema
 
 auth_bp = Blueprint('auth_api', __name__)
 
@@ -45,8 +46,8 @@ def login_view(prefix):
     if form.validate_on_submit():
         user = login(form.phone.data, form.password.data)
         if user:
-            access_token = get_user_jwt(user.id)  # 假设get_user_jwt接受用户ID
-            return jsonify(access_token=access_token), 200
+            access_token = get_user_jwt(user)  # 假设get_user_jwt接受用户
+            return jsonify(access_token=access_token, user=user_schema.dump(user)), 200
         else:
             return jsonify({"error": "Invalid credentials"}), 401
     else:

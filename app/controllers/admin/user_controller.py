@@ -62,10 +62,10 @@ def send_gift(user_id:int, json_data):
         start_at, end_at = None, None
         
         if product.ptype == 1:
-            start_at = datetime.now
-            if last_property and last_property.end_at > datetime.now:
+            start_at = datetime.now()
+            if last_property and last_property.end_at > datetime.now():
                 start_at = last_property.end_at
-            end_at = start_at + timedelta(product.duration.days)
+            end_at = start_at + timedelta(days = product.duration)
             
         new_property:Property = Property(
             name=product.name,

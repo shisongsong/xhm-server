@@ -1,4 +1,4 @@
-from flask import jsonify, make_response, current_app
+from flask import jsonify, make_response, current_app, request
 from functools import wraps
 from werkzeug.exceptions import HTTPException
 
@@ -30,5 +30,31 @@ def api_view():
                 # 其他未处理的异常，返回500 Internal Server Error
                 return make_response(jsonify({'success': False, 'message': 'An unexpected error occurred'}), 500)
         
+        return wrapper
+    return decorator
+
+# 分页装饰器
+def paginator(schema_class):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            page = request.args.get('page', 1, type=int)
+            per_page = min(request.args.get('per_page', 10, type=int), 100)
+            
+            # 调用原始函数获取查询对象，然后进行分页
+            query = func(*args, **kwargs)
+            paginated_query = query.paginate(page=page, per_page=per_page, error_out=False)
+            
+            # 使用序列化器处理分页数据
+            items_serialized = schema_class(many=True).dump(paginated_query.items)
+            response_data = {
+                'items': items_serialized,
+                'total': paginated_query.total,
+                'page': paginated_query.page,
+                'per_page': paginated_query.per_page,
+                'has_next': paginated_query.has_next,
+                'has_prev': paginated_query.has_prev,
+            }
+            return response_data
         return wrapper
     return decorator

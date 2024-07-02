@@ -6,7 +6,7 @@ class Property(db.Model):
     name = db.Column(db.String(64), nullable=False)
     description = db.Column(db.Text)
     ptype = db.Column(db.Integer, default=0)
-    price = db.Column(db.Numeric, default=0)
+    price = db.Column(db.Float, default=0)
     pieces = db.Column(db.Integer, default=0)
     start_at = db.Column(db.DateTime)
     end_at = db.Column(db.DateTime)
