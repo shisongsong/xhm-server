@@ -25,10 +25,9 @@ def api_view():
                 if isinstance(e, KeyError):
                     return make_response(jsonify({'success': False, 'message': str(e)}), 400)
                 elif isinstance(e, HTTPException):
-                    return make_response(jsonify({'success': False, 'message': str(e)}), e.code)
-                
+                    return make_response(jsonify({'success': False, 'message': str(e.description)}), e.code)
                 # 其他未处理的异常，返回500 Internal Server Error
-                return make_response(jsonify({'success': False, 'message': 'An unexpected error occurred'}), 500)
+                return make_response(jsonify({'success': False, 'message': '发生了错误'}), 500)
         
         return wrapper
     return decorator

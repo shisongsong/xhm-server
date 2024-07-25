@@ -1,10 +1,10 @@
-from flask import Blueprint, request, current_app
+from flask import Blueprint, request
 from werkzeug.exceptions import BadRequest, NotFound
 from flask_jwt_extended import jwt_required
 from app.controllers.admin.property_controller import update
 from app.jwt_required import admin_route_required
 from app.models.property import Property
-from app.schemas.property import PropertySchema, properties_schema, property_schema
+from app.schemas.property import PropertySchema, property_schema
 from app.views import api_view, paginator
 
 admin_property_bp = Blueprint('admin_property', __name__, url_prefix='/admin')

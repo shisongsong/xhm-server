@@ -6,7 +6,7 @@ from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 import logging
 from logging.handlers import RotatingFileHandler
-from app.jwt_callbacks import add_claims_to_access_token, user_identity_lookup, user_lookup_callback
+from app.jwt_callbacks import add_claims_to_access_token, check_if_token_in_blacklist, token_verification_callback, user_identity_lookup, user_lookup_callback
 import config
 import os
 
@@ -25,6 +25,7 @@ from app.models.user import User
 from app.models.product import Product
 from app.models.order import Order
 from app.models.property import Property
+from app.models.invite_code import InviteCode
 
 # 创建种子数据
 from app.seed_data import seed_data
@@ -36,10 +37,15 @@ CORS(app)
 
 # JWT配置
 app.config['JWT_SECRET_KEY'] = 'your-secret-key'  # 应替换为强随机密钥
+app.config['JWT_BLACKLIST_ENABLED'] = True     # 启用黑名单功能
+app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']  # 在哪些类型的令牌上检查黑名单
+
 jwt = JWTManager(app)
 jwt.additional_claims_loader(add_claims_to_access_token)
+jwt.token_verification_loader(token_verification_callback)
 jwt.user_identity_loader(user_identity_lookup)
 jwt.user_lookup_loader(user_lookup_callback)
+jwt.token_in_blocklist_loader(check_if_token_in_blacklist)
 
 # 注册Blueprint
 from app.views.auth import auth_bp
@@ -49,17 +55,21 @@ app.register_blueprint(auth_bp)
 from app.views.admin.user import admin_user_bp
 from app.views.admin.product import admin_product_bp
 from app.views.admin.property import admin_property_bp
+from app.views.admin.invite_code import admin_invite_code_bp
 app.register_blueprint(admin_user_bp)
 app.register_blueprint(admin_product_bp)
 app.register_blueprint(admin_property_bp)
+app.register_blueprint(admin_invite_code_bp)
 
 # 注册api Blueprint
 from app.views.api.user import api_user_bp
 from app.views.api.product import api_product_bp
 from app.views.api.property import api_property_bp
+from app.views.api.invite_code import api_invite_code_bp
 app.register_blueprint(api_user_bp)
 app.register_blueprint(api_product_bp)
 app.register_blueprint(api_property_bp)
+app.register_blueprint(api_invite_code_bp)
 
 # 设置日志级别
 app.logger.setLevel(logging.DEBUG)  # 或者logging.INFO, logging.WARNING等

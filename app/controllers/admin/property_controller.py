@@ -1,9 +1,7 @@
-from datetime import datetime
 from flask import current_app
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, DateTimeField, DecimalField, IntegerField, StringField
-from wtforms.validators import DataRequired, EqualTo
-from werkzeug.exceptions import BadRequest, NotFound
+from werkzeug.exceptions import NotFound
 from app.models.property import Property
 from app import db
 

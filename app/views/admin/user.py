@@ -1,6 +1,6 @@
-from flask import Blueprint, current_app, request
+from flask import Blueprint, request
 from werkzeug.exceptions import BadRequest, NotFound
-from flask_jwt_extended import get_jwt, jwt_required
+from flask_jwt_extended import jwt_required
 from app.controllers.admin.user_controller import create, send_gift, update, reset_password
 from app.jwt_required import admin_route_required
 from app.models.user import User

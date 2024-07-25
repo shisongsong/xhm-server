@@ -688,3 +688,587 @@ WHERE user.id = ?]
 2024-07-02 03:32:04,409 - INFO - jwt_required:10 - {'fresh': False, 'iat': 1719890849, 'jti': '3ad046c9-82a2-43ae-8530-3382c8f4c10e', 'type': 'access', 'sub': 3, 'nbf': 1719890849, 'csrf': 'ddfc89f1-7d69-488b-963c-7ed0ceb3eb38', 'exp': 1719898049, 'role': 'admin'}
 2024-07-02 03:32:33,167 - INFO - jwt_required:10 - {'fresh': False, 'iat': 1719890849, 'jti': '3ad046c9-82a2-43ae-8530-3382c8f4c10e', 'type': 'access', 'sub': 3, 'nbf': 1719890849, 'csrf': 'ddfc89f1-7d69-488b-963c-7ed0ceb3eb38', 'exp': 1719898049, 'role': 'admin'}
 2024-07-02 03:32:38,974 - INFO - jwt_required:10 - {'fresh': False, 'iat': 1719890849, 'jti': '3ad046c9-82a2-43ae-8530-3382c8f4c10e', 'type': 'access', 'sub': 3, 'nbf': 1719890849, 'csrf': 'ddfc89f1-7d69-488b-963c-7ed0ceb3eb38', 'exp': 1719898049, 'role': 'admin'}
+2024-07-03 02:40:40,937 - ERROR - app:838 - Exception on /admin/login [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 883, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 902, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1193, in make_response
+    rv = self.json.response(rv)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/json/provider.py", line 214, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=self.mimetype
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/json/provider.py", line 179, in dumps
+    return json.dumps(obj, **kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/python/3.10.13/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/python/3.10.13/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+TypeError: '<' not supported between instances of 'User' and 'str'
+2024-07-03 02:43:30,584 - INFO - auth:39 - None
+2024-07-03 02:43:30,584 - INFO - auth:40 - {'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTk3NDYxMCwianRpIjoiMjFmOTUxMTctNWQ5Mi00NWM3LTk4YzUtOTZjMjhiMzVjOTM3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzE5OTc0NjEwLCJjc3JmIjoiMjQ2ZjI3YmUtNzRkZS00OWZjLTgwOTQtZDVjYWM5M2JlYTI2IiwiZXhwIjoxNzE5OTgxODEwLCJyb2xlIjoiYWRtaW4ifQ.I6np__DrfeOLp8qyw7hmSkvnq74qjiFdzvZ4U6LlZ5A': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTk3NDYxMCwianRpIjoiMjFmOTUxMTctNWQ5Mi00NWM3LTk4YzUtOTZjMjhiMzVjOTM3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzE5OTc0NjEwLCJjc3JmIjoiMjQ2ZjI3YmUtNzRkZS00OWZjLTgwOTQtZDVjYWM5M2JlYTI2IiwiZXhwIjoxNzE5OTgxODEwLCJyb2xlIjoiYWRtaW4ifQ.I6np__DrfeOLp8qyw7hmSkvnq74qjiFdzvZ4U6LlZ5A', <User 3>: {'id': 3, 'phone': '17696021211', 'role': 'admin', 'deleted': False, 'created_at': '2024-06-27T04:20:53.539191', 'updated_at': '2024-07-03T02:43:24.334968'}}
+2024-07-03 02:43:30,585 - ERROR - app:838 - Exception on /admin/login [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 883, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 902, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1193, in make_response
+    rv = self.json.response(rv)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/json/provider.py", line 214, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=self.mimetype
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/json/provider.py", line 179, in dumps
+    return json.dumps(obj, **kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/python/3.10.13/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/python/3.10.13/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+TypeError: '<' not supported between instances of 'User' and 'str'
+2024-07-03 02:44:29,396 - INFO - auth:39 - None
+2024-07-03 02:44:29,397 - INFO - auth:40 - {'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTk3NDY2OSwianRpIjoiNmIxOTQ2YmEtYmY3NC00MmRiLTg3ODEtNjI2NGI5YjgyZjNlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzE5OTc0NjY5LCJjc3JmIjoiOTFhYjcxZDktZTUzYy00N2E1LWEwZTgtOWY3YzA5ZWQ5NWM1IiwiZXhwIjoxNzE5OTgxODY5LCJyb2xlIjoiYWRtaW4ifQ.B9amd_GwuL0S6CfdSjG9KqOAvMji-JCJvwIPgxQKKvM', 'user': {'id': 3, 'phone': '17696021211', 'role': 'admin', 'deleted': False, 'created_at': '2024-06-27T04:20:53.539191', 'updated_at': '2024-07-03T02:44:23.341994'}}
+2024-07-03 02:46:13,782 - ERROR - __init__:22 - 401 Unauthorized: 用户名或密码错误
+2024-07-03 02:46:33,403 - INFO - auth:41 - None
+2024-07-03 02:46:33,404 - INFO - auth:42 - {'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTk3NDc5MywianRpIjoiOGI4MDQ0MWYtODFkOC00NTE5LWIxYzgtMmM0ZmVlMzVlNzk5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzE5OTc0NzkzLCJjc3JmIjoiMmFlM2IwODctMDA0OS00NTlmLWJmZTAtZDBiNjY5Y2U5ZmM1IiwiZXhwIjoxNzE5OTgxOTkzLCJyb2xlIjoiYWRtaW4ifQ.5CYPOY0ANpULWODy_2HhuG8rkyYrv0j93BvWp7kZUG0', 'user': {'id': 3, 'phone': '17696021211', 'role': 'admin', 'deleted': False, 'created_at': '2024-06-27T04:20:53.539191', 'updated_at': '2024-07-03T02:45:59.703969'}}
+2024-07-03 02:47:32,581 - INFO - auth:41 - None
+2024-07-03 02:47:32,582 - INFO - auth:42 - {'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTk3NDg1MiwianRpIjoiM2JlNGZhNTItMTg2MS00MGE5LTljNmItZmExYzZhNjY4NWNlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MiwibmJmIjoxNzE5OTc0ODUyLCJjc3JmIjoiMjUxYzUyY2YtOTI1Mi00Mzk3LTk5NjctM2I1MGVhZDE3ZTM1IiwiZXhwIjoxNzE5OTgyMDUyLCJyb2xlIjoidXNlciJ9.B-KloYlxUJ5OF6czfqX5SvrI_-ebN5ZtAN55UxmXC5o', 'user': {'id': 2, 'phone': '17696021212', 'role': 'user', 'deleted': False, 'created_at': '2024-06-26T07:46:49.759424', 'updated_at': '2024-06-26T07:46:49.759429'}}
+2024-07-03 02:47:43,011 - INFO - auth:41 - None
+2024-07-03 02:47:43,012 - INFO - auth:42 - {'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTk3NDg2MywianRpIjoiMjQ1NTVmZGYtM2ExMS00NGFhLTk5MzYtZmY4YjNiNWViMGY0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzE5OTc0ODYzLCJjc3JmIjoiMWExN2VlNTktMGQ0MC00NTY3LWJkNGQtYjhmNGVmYjU2NjY5IiwiZXhwIjoxNzE5OTgyMDYzLCJyb2xlIjoiYWRtaW4ifQ.UQqAxAn4OTdeHlnZ0hCA0Rb91XAV5WVb9QrH6J__hPQ', 'user': {'id': 3, 'phone': '17696021211', 'role': 'admin', 'deleted': False, 'created_at': '2024-06-27T04:20:53.539191', 'updated_at': '2024-07-03T02:45:59.703969'}}
+2024-07-03 03:13:24,470 - ERROR - __init__:22 - 401 Unauthorized: 用户名或密码错误
+2024-07-04 05:55:44,297 - INFO - auth:40 - {'phone': '17696021212', 'password': '11111111'}
+2024-07-08 05:59:40,048 - ERROR - __init__:22 - local variable 'json_data' referenced before assignment
+2024-07-08 06:08:36,706 - ERROR - __init__:22 - 404 Not Found: api路径不存在
+2024-07-08 06:10:41,813 - ERROR - __init__:22 - Entity namespace for "property" has no property "uesr_id"
+2024-07-08 06:13:43,353 - ERROR - __init__:22 - 'list' object has no attribute 'paginate'
+2024-07-08 06:26:51,785 - ERROR - __init__:22 - Query.get() being called on a Query with existing criterion. 
+2024-07-08 06:29:01,281 - ERROR - __init__:22 - 404 Not Found: 资产不存在
+2024-07-08 06:29:43,484 - ERROR - __init__:22 - 409 Conflict: 手机号已存在，请更换手机号重试
+2024-07-08 06:31:09,700 - ERROR - __init__:22 - 409 Conflict: 手机号已存在，请更换手机号重试
+2024-07-08 06:36:10,415 - ERROR - __init__:22 - (sqlite3.IntegrityError) UNIQUE constraint failed: user.phone
+[SQL: UPDATE user SET phone=?, role=?, deleted=?, updated_at=? WHERE user.id = ?]
+[parameters: ('17696021213', 'admin', 1, '2024-07-08 06:36:10.415082', 2)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-07-08 06:42:09,055 - ERROR - __init__:22 - (sqlite3.IntegrityError) NOT NULL constraint failed: user.phone
+[SQL: UPDATE user SET phone=?, role=?, updated_at=? WHERE user.id = ?]
+[parameters: (None, 'user', '2024-07-08 06:42:09.054739', 2)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-07-08 06:43:48,974 - ERROR - __init__:22 - (sqlite3.IntegrityError) NOT NULL constraint failed: user.phone
+[SQL: UPDATE user SET phone=?, role=?, deleted=?, updated_at=? WHERE user.id = ?]
+[parameters: (None, 'user', 0, '2024-07-08 06:43:48.974636', 2)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-07-11 06:21:06,600 - ERROR - __init__:22 - 401 Unauthorized: 用户名或密码错误
+2024-07-11 06:21:28,081 - ERROR - __init__:22 - 401 Unauthorized: 用户名或密码错误
+2024-07-11 06:21:51,849 - ERROR - __init__:22 - 404 Not Found: 资产不存在
+2024-07-11 07:15:36,542 - ERROR - __init__:22 - '>' not supported between instances of 'str' and 'datetime.datetime'
+2024-07-15 07:24:54,079 - ERROR - __init__:22 - '>' not supported between instances of 'str' and 'datetime.datetime'
+2024-07-24 06:39:39,179 - ERROR - __init__:22 - Query.get() being called on a Query with existing criterion. 
+2024-07-24 06:42:35,901 - ERROR - __init__:22 - Query.get() being called on a Query with existing criterion. 
+2024-07-24 06:43:38,862 - ERROR - __init__:22 - 404 Not Found: 邀请码不存在
+2024-07-24 08:43:22,050 - ERROR - __init__:22 - Boolean value of this clause is not defined
+2024-07-24 08:54:32,045 - ERROR - app:838 - Exception on /api/invite_codes [POST]
+Traceback (most recent call last):
+  File "/workspaces/red-crawler/app/views/__init__.py", line 11, in wrapper
+    result = func(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/api/invite_code.py", line 21, in create_invite_codes_view
+    invite_code = InviteCode.gene_invite_code(current_user.id)
+  File "/workspaces/red-crawler/app/models/invite_code.py", line 23, in gene_invite_code
+    if InviteCode.query.filter(InviteCode.code == invite_code.code).exists():
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 748, in __bool__
+    raise TypeError("Boolean value of this clause is not defined")
+TypeError: Boolean value of this clause is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_jwt_extended/view_decorators.py", line 170, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/__init__.py", line 22, in wrapper
+    current_app.logger.error(e.with_traceback())
+TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
+2024-07-24 08:58:05,555 - ERROR - app:838 - Exception on /api/invite_codes [POST]
+Traceback (most recent call last):
+  File "/workspaces/red-crawler/app/views/__init__.py", line 11, in wrapper
+    result = func(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/api/invite_code.py", line 25, in create_invite_codes_view
+    raise Exception("邀请码创建失败")
+Exception: 邀请码创建失败
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_jwt_extended/view_decorators.py", line 170, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/__init__.py", line 22, in wrapper
+    current_app.logger.error(e.with_traceback())
+TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
+2024-07-24 08:59:48,841 - ERROR - app:838 - Exception on /api/invite_codes/3 [GET]
+Traceback (most recent call last):
+  File "/workspaces/red-crawler/app/views/__init__.py", line 11, in wrapper
+    result = func(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/api/invite_code.py", line 33, in invite_code_view
+    raise NotFound("邀请码不存在")
+werkzeug.exceptions.NotFound: 404 Not Found: 邀请码不存在
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_jwt_extended/view_decorators.py", line 170, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/__init__.py", line 22, in wrapper
+    current_app.logger.error(e.with_traceback())
+TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
+2024-07-24 09:14:30,115 - ERROR - __init__:22 - 404 Not Found: 邀请码不存在
+2024-07-24 09:17:56,122 - ERROR - __init__:22 - scoped_session.begin() got an unexpected keyword argument 'subtransactions'
+2024-07-24 09:19:02,472 - ERROR - __init__:22 - Can't operate on closed transaction inside context manager.  Please complete the context manager before emitting further commands.
+2024-07-24 09:20:05,785 - ERROR - app:838 - Exception on /api/register [POST]
+Traceback (most recent call last):
+  File "/workspaces/red-crawler/app/views/__init__.py", line 11, in wrapper
+    result = func(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/auth.py", line 19, in register_view
+    errors, res = register(json_data)
+  File "/workspaces/red-crawler/app/controllers/auth_controller.py", line 35, in register
+    new_user.invite_code_code = invite_code.code
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py", line 566, in __get__
+    return self.impl.get(state, dict_)  # type: ignore[no-any-return]
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py", line 1086, in get
+    value = self._fire_loader_callables(state, key, passive)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py", line 1116, in _fire_loader_callables
+    return state._load_expired(state, passive)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/state.py", line 803, in _load_expired
+    self.manager.expired_attribute_loader(self, toload, passive)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/loading.py", line 1670, in load_scalar_attributes
+    result = load_on_ident(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/loading.py", line 509, in load_on_ident
+    return load_on_pk_identity(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/loading.py", line 694, in load_on_pk_identity
+    session.execute(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2226, in _execute_internal
+    conn = self._connection_for_bind(bind)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2090, in _connection_for_bind
+    TransactionalContext._trans_ctx_check(self)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/util.py", line 111, in _trans_ctx_check
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Can't operate on closed transaction inside context manager.  Please complete the context manager before emitting further commands.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/workspaces/red-crawler/app/views/__init__.py", line 22, in wrapper
+    current_app.logger.error(e.with_traceback())
+TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
+2024-07-24 09:25:42,923 - ERROR - app:838 - Exception on /api/register [POST]
+Traceback (most recent call last):
+  File "/workspaces/red-crawler/app/views/__init__.py", line 11, in wrapper
+    result = func(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/auth.py", line 19, in register_view
+    errors, res = register(json_data)
+  File "/workspaces/red-crawler/app/controllers/auth_controller.py", line 27, in register
+    with db.session.begin():
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/scoping.py", line 443, in begin
+    return self._proxied.begin(nested=nested)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1928, in begin
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: A transaction is already begun on this Session.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/workspaces/red-crawler/app/views/__init__.py", line 22, in wrapper
+    current_app.logger.error(e.with_traceback())
+TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
+2024-07-25 07:04:17,714 - ERROR - app:838 - Exception on /api/register [POST]
+Traceback (most recent call last):
+  File "/workspaces/red-crawler/app/views/__init__.py", line 11, in wrapper
+    result = func(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/auth.py", line 20, in register_view
+    errors, res = register(json_data)
+  File "/workspaces/red-crawler/app/controllers/auth_controller.py", line 25, in register
+    with db.session.begin():
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/scoping.py", line 443, in begin
+    return self._proxied.begin(nested=nested)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1928, in begin
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: A transaction is already begun on this Session.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/workspaces/red-crawler/app/views/__init__.py", line 22, in wrapper
+    current_app.logger.error(e.with_traceback())
+TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
+2024-07-25 07:09:37,302 - ERROR - app:838 - Exception on /api/register [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: invite_code.owner_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspaces/red-crawler/app/views/__init__.py", line 11, in wrapper
+    result = func(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/auth.py", line 20, in register_view
+    errors, res = register(json_data)
+  File "/workspaces/red-crawler/app/controllers/auth_controller.py", line 22, in register
+    with db.session.begin():
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/util.py", line 147, in __exit__
+    with util.safe_reraise():
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/util.py", line 145, in __exit__
+    self.commit()
+  File "<string>", line 2, in commit
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1302, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1277, in _prepare_impl
+    self.session.flush()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4341, in flush
+    self._flush(objects)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4476, in _flush
+    with util.safe_reraise():
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4437, in _flush
+    flush_context.execute()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: invite_code.owner_id
+[SQL: INSERT INTO invite_code (code, pieces, deleted, created_at, updated_at, owner_id) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('VCuJk0', 3, 0, '2024-07-25 07:09:37.301599', '2024-07-25 07:09:37.301602', None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/workspaces/red-crawler/app/views/__init__.py", line 22, in wrapper
+    current_app.logger.error(e.with_traceback())
+TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
+2024-07-25 07:23:26,855 - ERROR - app:838 - Exception on /api/register [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: invite_code.owner_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspaces/red-crawler/app/views/__init__.py", line 11, in wrapper
+    result = func(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/auth.py", line 20, in register_view
+    errors, res = register(json_data)
+  File "/workspaces/red-crawler/app/controllers/auth_controller.py", line 22, in register
+    with db.session.begin(nested=True):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/util.py", line 147, in __exit__
+    with util.safe_reraise():
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/util.py", line 145, in __exit__
+    self.commit()
+  File "<string>", line 2, in commit
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1302, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1277, in _prepare_impl
+    self.session.flush()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4341, in flush
+    self._flush(objects)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4476, in _flush
+    with util.safe_reraise():
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4437, in _flush
+    flush_context.execute()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: invite_code.owner_id
+[SQL: INSERT INTO invite_code (code, pieces, deleted, created_at, updated_at, owner_id) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('7BSAIg', 3, 0, '2024-07-25 07:23:26.854753', '2024-07-25 07:23:26.854755', None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/workspaces/red-crawler/app/views/__init__.py", line 22, in wrapper
+    current_app.logger.error(e.with_traceback())
+TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
+2024-07-25 07:31:36,809 - ERROR - app:838 - Exception on /api/register [POST]
+Traceback (most recent call last):
+  File "/workspaces/red-crawler/app/views/__init__.py", line 11, in wrapper
+    result = func(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/auth.py", line 20, in register_view
+    errors, res = register(json_data)
+  File "/workspaces/red-crawler/app/controllers/auth_controller.py", line 24, in register
+    raise Conflict("手机号已存在，请更换手机号重试")
+werkzeug.exceptions.Conflict: 409 Conflict: 手机号已存在，请更换手机号重试
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/workspaces/red-crawler/app/views/__init__.py", line 22, in wrapper
+    current_app.logger.error(e.with_traceback())
+TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
+2024-07-25 07:32:37,394 - ERROR - __init__:22 - 409 Conflict: 手机号已存在，请更换手机号重试
+2024-07-25 07:38:18,980 - ERROR - app:838 - Exception on /api/logout [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+TypeError: jwt_required.<locals>.wrapper() got an unexpected keyword argument 'prefix'
+2024-07-25 07:39:06,109 - ERROR - app:838 - Exception on /api/logout [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+TypeError: jwt_required.<locals>.wrapper() got an unexpected keyword argument 'prefix'
+2024-07-25 07:41:11,615 - ERROR - app:838 - Exception on /api/logout [POST]
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+TypeError: jwt_required.<locals>.wrapper() got an unexpected keyword argument 'prefix'
+2024-07-25 07:41:56,100 - ERROR - __init__:22 - A transaction is already begun on this Session.
+2024-07-25 07:42:47,513 - ERROR - __init__:22 - A transaction is already begun on this Session.
+2024-07-25 07:43:18,468 - ERROR - __init__:22 - A transaction is already begun on this Session.
+2024-07-25 07:44:15,685 - ERROR - app:838 - Exception on /api/logout [POST]
+Traceback (most recent call last):
+  File "/workspaces/red-crawler/app/views/__init__.py", line 11, in wrapper
+    result = func(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/auth.py", line 59, in logout_view
+    with db.session.begin():
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/scoping.py", line 443, in begin
+    return self._proxied.begin(nested=nested)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1928, in begin
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: A transaction is already begun on this Session.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_jwt_extended/view_decorators.py", line 170, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+  File "/workspaces/red-crawler/app/views/__init__.py", line 22, in wrapper
+    current_app.logger.error(e.with_traceback())
+TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
+2024-07-25 08:00:29,943 - ERROR - app:838 - Exception on /api/properties [GET]
+Traceback (most recent call last):
+  File "/workspaces/red-crawler/app/views/__init__.py", line 11, in wrapper
+    result = func(*args, **kwargs)
+  File "/workspaces/red-crawler/app/jwt_callbacks.py", line 36, in check_if_token_in_blacklist
+    raise Unauthorized("登录失效，请重新登录")
+werkzeug.exceptions.Unauthorized: 401 Unauthorized: 登录失效，请重新登录
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_cors/extension.py", line 178, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_jwt_extended/view_decorators.py", line 167, in decorator
+    verify_jwt_in_request(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_jwt_extended/view_decorators.py", line 94, in verify_jwt_in_request
+    jwt_data, jwt_header, jwt_location = _decode_jwt_from_request(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_jwt_extended/view_decorators.py", line 368, in _decode_jwt_from_request
+    verify_token_not_blocklisted(jwt_header, decoded_token)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/flask_jwt_extended/internal_utils.py", line 58, in verify_token_not_blocklisted
+    if jwt_manager._token_in_blocklist_callback(jwt_header, jwt_data):
+  File "/workspaces/red-crawler/app/views/__init__.py", line 22, in wrapper
+    current_app.logger.error(e.with_traceback())
+TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
+2024-07-25 08:01:03,476 - ERROR - __init__:22 - 401 Unauthorized: 登录失效，请重新登录
+2024-07-25 08:02:37,729 - ERROR - __init__:22 - Object of type Response is not JSON serializable
+2024-07-25 08:08:00,572 - ERROR - __init__:22 - 404 Not Found: 邀请码不存在
+2024-07-25 08:09:37,949 - ERROR - __init__:22 - fromisoformat: argument must be str

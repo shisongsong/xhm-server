@@ -1,10 +1,10 @@
-from flask import Blueprint, request, current_app
+from flask import Blueprint, request
 from werkzeug.exceptions import BadRequest, NotFound
 from flask_jwt_extended import jwt_required
 from app.controllers.admin.product_controller import create, update
 from app.jwt_required import admin_route_required
 from app.models.product import Product
-from app.schemas.product import ProductSchema, products_schema, product_schema
+from app.schemas.product import ProductSchema, product_schema
 from app.views import api_view, paginator
 
 admin_product_bp = Blueprint('admin_product', __name__, url_prefix='/admin')

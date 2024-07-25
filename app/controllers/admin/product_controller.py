@@ -1,8 +1,8 @@
 from flask import current_app
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, DecimalField, IntegerField, StringField
-from wtforms.validators import DataRequired, EqualTo
-from werkzeug.exceptions import BadRequest, NotFound
+from wtforms.validators import DataRequired
+from werkzeug.exceptions import NotFound
 from app.models.product import Product
 from app import db
 
