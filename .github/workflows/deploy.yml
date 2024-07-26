@@ -9,6 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    environment: prod  # 或者您定义的环境名称
+
     steps:
     - name: Deploy to server
       uses: appleboy/ssh-action@master
