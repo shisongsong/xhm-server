@@ -24,8 +24,7 @@ jobs:
           # 更新系统包
           sudo yum update -y
           # 安装必要的软件包
-          sudo yum install -y epel-release
-          sudo yum install -y python3-pip supervisor
+          sudo yum install -y supervisor
           # 克隆最新的代码
           git clone -b main git@github.com:shisongsong/xhm-server.git ~/apps/xhm-server/deployments/current
           cd ~/apps/xhm-server/deployments/current
