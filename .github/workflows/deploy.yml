@@ -29,7 +29,7 @@ jobs:
           git clone -b main git@github.com:shisongsong/xhm-server.git ~/apps/xhm-server/deployments/current
           cd ~/apps/xhm-server/deployments/current
           # 安装依赖
-          pip3 install -r requirements.txt
+          pip3 install --index-url https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn -r requirements.txt
           # 启动或重启 Gunicorn
           echo "[program:app]" | sudo tee -a /etc/supervisord.d/app.conf
           echo "command=gunicorn --workers 3 --bind unix:/tmp/app.sock -m app:app" | sudo tee -a /etc/supervisord.d/app.conf
