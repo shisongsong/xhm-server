@@ -44,10 +44,15 @@ def login_view(prefix):
 def refresh_view(prefix):
     if prefix not in ["admin", "api"]:
         raise NotFound("api路径不存在")
+    refresh_token = request.json.get('refresh_token')
+    if not refresh_token:
+        raise NotFound("缺少refresh_token信息")
+    if RevokedToken.is_token_blacklisted(refresh_token=refresh_token):
+        raise BadRequest("refresh_token已经失效")
     identity = get_jwt()["sub"]
     user:User = User.query.filter_by(id=identity).one_or_none()
-    access_token, refresh_token = get_user_jwt(user)
-    return { 'access_token': access_token, 'refresh_token': refresh_token, 'user': user_schema.dump(user) }
+    access_token, _ = get_user_jwt(user)
+    return { 'access_token': access_token, 'user': user_schema.dump(user) }
 
 @auth_bp.route('/<prefix>/logout', methods=['POST'])
 @jwt_required()
@@ -55,8 +60,11 @@ def refresh_view(prefix):
 def logout_view(prefix):
     if prefix not in ["admin", "api"]:
         raise NotFound("api路径不存在")
+    refresh_token = request.json.get('refresh_token')
+    if not refresh_token:
+        raise NotFound("缺少refresh_token信息")
     jti = get_jwt()['jti']
-    revoked_token = RevokedToken(jti=jti)
+    revoked_token = RevokedToken(jti=jti, refresh_token=refresh_token)
     revoked_token.add()
     db.session.commit()
     return {"message": "退出登录"}

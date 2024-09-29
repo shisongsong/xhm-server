@@ -1,19 +1,20 @@
 from datetime import timedelta
-from flask import current_app
 from flask_jwt_extended import create_access_token, create_refresh_token
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, EqualTo
-from werkzeug.exceptions import Unauthorized, Conflict, NotFound
+from werkzeug.exceptions import Unauthorized, Conflict
 from app import db
 from app.models.invite_code import InviteCode
 from app.models.user import User
 from app.schemas.user import user_schema
 
-def get_user_jwt(user):
+def get_user_jwt(user, refresh=False):
     """生成JWT令牌"""
     access_token = create_access_token(identity=user, expires_delta=timedelta(hours=2))
-    refresh_token = create_refresh_token(identity=user, expires_delta=timedelta(days=30))
+    refresh_token = None
+    if refresh:
+        refresh_token = create_refresh_token(identity=user, expires_delta=timedelta(days=30))
     return access_token, refresh_token
 
 def register(json_data):
@@ -39,7 +40,7 @@ def login(json_data):
     if form.validate_on_submit():
         user:User = User.query.filter_by(phone=form.phone.data, deleted=False).first()
         if user and user.check_password(form.password.data):
-            access_token, refresh_token = get_user_jwt(user)
+            access_token, refresh_token = get_user_jwt(user, True)
             return None, { 'access_token': access_token, 'refresh_token': refresh_token, 'user': user_schema.dump(user) }
         else:
             raise Unauthorized("用户名或密码错误")
@@ -47,9 +48,6 @@ def login(json_data):
         errors = {field: error for field, error in form.errors.items()}
         return errors, None
     
-def logout(json_data):
-    return True
-
 class RegistrationForm(FlaskForm):
     phone = StringField('Phone', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])

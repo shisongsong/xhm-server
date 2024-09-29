@@ -1272,3 +1272,9 @@ TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
 2024-07-25 08:02:37,729 - ERROR - __init__:22 - Object of type Response is not JSON serializable
 2024-07-25 08:08:00,572 - ERROR - __init__:22 - 404 Not Found: 邀请码不存在
 2024-07-25 08:09:37,949 - ERROR - __init__:22 - fromisoformat: argument must be str
+2024-09-29 07:42:32,144 - ERROR - __init__:22 - 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+2024-09-29 07:44:09,021 - ERROR - __init__:22 - RevokedToken.is_token_blacklisted() missing 1 required positional argument: 'cls'
+2024-09-29 07:46:25,692 - ERROR - __init__:22 - 404 Not Found: 缺少refresh_token信息
+2024-09-29 07:47:08,726 - ERROR - __init__:22 - 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+2024-09-29 07:47:31,584 - ERROR - __init__:22 - 400 Bad Request: refresh_token已经失效
+2024-09-29 07:48:58,265 - ERROR - __init__:22 - 400 Bad Request: refresh_token已经失效
